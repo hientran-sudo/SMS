@@ -1,0 +1,36 @@
+﻿@model List<Instructor>
+@{
+    ViewBag.Title = "Instructors";
+}
+
+<table class="table table-striped table-bordered">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var i in Model)
+        {
+            <tr>
+                <td>@i.InstructorId</td>
+                <td>@i.Name</td>
+                <td>@i.Email</td>
+
+                <td>
+                    <a asp-controller="Instructor" asp-action="Edit" asp-route-id=@i.InstructorId class="btn btn-info"> Edit </a>
+                    <a asp-controller="Instructor" asp-action="Delete" asp-route-id="@i.InstructorId" class="btn btn-info"> Delete </a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<form asp-action="Add" method="get">
+    <button type="submit" class="btn btn-info"> Add Instructors </button>
+</form>
+
+
+
