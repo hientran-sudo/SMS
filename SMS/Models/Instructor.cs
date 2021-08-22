@@ -5,13 +5,11 @@ using System.Threading.Tasks;
 
 namespace SMS.Models
 {
-    public class Student
+    public class Instructor
     {
-        public int StudentId { get; set; }
+        public int InstructorId { get; set; }
         public string Name { get; set; }
-        public DateTime Dob { get; set; }
-        public string Phone { get; set; }
         public string Email { get; set; }
-        public string Address { get; set; }
+
     }
 }
