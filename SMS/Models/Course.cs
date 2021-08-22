@@ -18,6 +18,7 @@ namespace SMS.Models
         public int InstructorId { get; set; }
         public Major Major { get; set; }
         public int MajorId { get; set; }
+        public ICollection<EnrollInfo> EnrollInfos { get; set; }
 
     }
 }

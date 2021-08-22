@@ -9,5 +9,6 @@ namespace SMS.Models
     {
         public int MajorId { get; set; }
         public string Title { get; set; }
+        public ICollection<Majoring> Majorings { get; set; }
     }
 }

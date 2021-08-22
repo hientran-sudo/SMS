@@ -5,12 +5,11 @@ using System.Threading.Tasks;
 
 namespace SMS.Models
 {
-    public class Enrollment
+    public class Majoring
     {
-        public int EnrollmentId { get; set; }
-        public string Term { get; set; }
+        public Major Major { get; set; }
+        public int MajorId { get; set; }
         public Student Student { get; set; }
         public int StudentId { get; set; }
-        public ICollection<EnrollInfo> EnrollInfos { get; set; }
     }
 }
