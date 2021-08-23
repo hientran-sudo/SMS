@@ -20,6 +20,11 @@ namespace SMS.Controllers
             var students = context.Students.OrderBy(s => s.StudentId).ToList();
             return View(students);
         }
+        public IActionResult Details(int id)
+        {
+            Student s = context.Students.Find(id);
+            return View(s);
+        }
         [HttpGet]
         public IActionResult Add()
         {
