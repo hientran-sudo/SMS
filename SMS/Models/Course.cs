@@ -14,10 +14,10 @@ namespace SMS.Models
         public DateTime Time { get; set; }
         public string Location { get; set; }
         public decimal Fee { get; set; }
-        public Instructor Instructor { get; set; }
         public int InstructorId { get; set; }
-        public Major Major { get; set; }
         public int MajorId { get; set; }
+        public Instructor Instructor { get; set; }      
+        public Major Major { get; set; }     
         public ICollection<EnrollInfo> EnrollInfos { get; set; }
 
     }

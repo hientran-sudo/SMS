@@ -1,0 +1,49 @@
+﻿@model List<Course>
+@{
+    ViewBag.Title = "Courses";
+}
+
+<table class="table table-striped table-bordered">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Title</th>
+            <th>Credits</th>
+            <th>Date</th>
+            <th>Time</th>
+            <th>Location</th>
+            <th>Fee</th>
+            <th>Instructor</th>
+            <th>Major</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var c in Model)
+        {
+        <tr>
+            <td>@c.CourseId</td>
+            <td>@c.Title</td>
+            <td>@c.Credits</td>
+            <td>@c.Date</td>
+            <td>@c.Time</td>
+            <td>@c.Location</td>
+            <td>@c.Fee</td>
+            @*<td></td>
+            <td></td>*@
+            <td>@c.InstructorId</td>
+            <td>@c.MajorId</td>
+            <td>
+                <a asp-controller="Course" asp-action="Edit" asp-route-id=@c.CourseId class="btn btn-info"> Edit </a>
+                <a asp-controller="Course" asp-action="Delete" asp-route-id="@c.CourseId" class="btn btn-info"> Delete </a>
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>
+<form asp-action="Add" method="get">
+    <button type="submit" class="btn btn-info"> Add Courses </button>
+</form>
+
+
+
+
