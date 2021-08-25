@@ -28,8 +28,8 @@
                 <td>@c.Time</td>
                 <td>@c.Location</td>
                 <td>@c.Fee</td>
-                <td>@c.InstructorId</td>
-                <td>@c.MajorId</td>
+                <td>@c.Instructor.Name</td>
+                <td>@c.Major.Title</td>
                 <td>
                     <a asp-controller="Course" asp-action="Edit" asp-route-id=@c.CourseId class="btn btn-info"> Edit </a>
                     <a asp-controller="Course" asp-action="Delete" asp-route-id="@c.CourseId" class="btn btn-info"> Delete </a>

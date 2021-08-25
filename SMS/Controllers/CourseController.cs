@@ -17,6 +17,8 @@ namespace SMS.Controllers
         }
         public IActionResult Index()
         {
+            ViewBag.Instructors = context.Instructors.OrderBy(i => i.Name).ToList();
+            ViewBag.Majors = context.Majors.OrderBy(m => m.Title).ToList();
             var courses = context.Courses.OrderBy(c => c.CourseId).ToList();
             return View(courses);
         }
