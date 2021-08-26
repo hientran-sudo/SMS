@@ -18,20 +18,30 @@
         </tr>
     </thead>
     <tbody>
-        @foreach (var c in Model.Students)
+        @foreach (Student student in Model.Students)
         {
         <tr>
-            <td>@c.StudentId</td>
-            <td>@c.Name</td>
+            <td>@student.StudentId</td>
+            <td>@student.Name</td>
 
             <td>
-                <a asp-controller="Student" asp-action="Details" asp-route-id="@c.StudentId" class="btn btn-info"> Details </a>
-                <a asp-controller="Student" asp-action="Edit" asp-route-id=@c.StudentId class="btn btn-info"> Edit </a>
+                <a asp-controller="Student" asp-action="Details" asp-route-id="@student.StudentId"> Details </a>
+                <a asp-controller="Student" asp-action="Edit" asp-route-id="@student.StudentId"> Edit </a>
 
             </td>
-            <td><a asp-controller="" asp-action="" asp-route-id="@c.StudentId" class="btn btn-info"> Details </a></td>
-            <td><a asp-controller="" asp-action="" asp-route-id="@c.StudentId" class="btn btn-info"> Details </a></td>
-            <td><a asp-controller="Student" asp-action="Delete" asp-route-id="@c.StudentId" class="btn btn-info"> Delete </a></td>
+            <td>
+                @foreach (var ma in student.Majorings)
+                {
+                    <p>
+                        <a asp-action="Details" asp-controller="Major"
+                           asp-route-id="@ma.MajorId">
+                            @ma.Major.Title
+                        </a>
+                    </p>
+                }
+            </td>
+            <td><a asp-controller="Enroll" asp-action="Index" asp-route-id="@student.StudentId" > Details </a></td>
+            <td><a asp-controller="Student" asp-action="Delete" asp-route-id="@student.StudentId" class="btn btn-info"> Delete </a></td>
         </tr>
         }
     </tbody>

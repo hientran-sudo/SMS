@@ -7,18 +7,21 @@
     <thead>
         <tr>
             <th>Student ID</th>
+            <th>Student Name</th>
             <th>Major ID</th>
+            <th>Title</th>
         </tr>
     </thead>
     <tbody>
         @foreach (var m in Model.Majorings)
         {
-            <tr>
-                <td>@m.StudentId</td>
-                <td>@m.MajorId</td>
+        <tr>
+            <td>@m.StudentId</td>
+            <td>@m.Student.Name</td>
+            <td>@m.MajorId</td>
+            <td>@m.Major.Title</td>
 
-                
-            </tr>
+        </tr>
         }
     </tbody>
 </table>
