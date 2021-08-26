@@ -1,0 +1,32 @@
+﻿@model dynamic
+@{
+    ViewBag.Title = "Majors";
+}
+
+<table class="table table-striped table-bordered">
+    <thead>
+        <tr>
+            <th>Student ID</th>
+            <th>Major ID</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var m in Model.Majorings)
+        {
+            <tr>
+                <td>@m.StudentId</td>
+                <td>@m.MajorId</td>
+
+                
+            </tr>
+        }
+    </tbody>
+</table>
+<form asp-action="Add" method="get">
+    <button type="submit" class="btn btn-info"> Add New </button>
+</form>
+
+
+
+
+

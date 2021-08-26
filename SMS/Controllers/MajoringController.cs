@@ -8,88 +8,80 @@ using System.Threading.Tasks;
 
 namespace SMS.Controllers
 {
-    public class StudentController : Controller
+    public class MajoringController : Controller
     {
         private StudentContext context { get; set; }
 
-        public StudentController(StudentContext ctx)
+        public MajoringController(StudentContext ctx)
         {
             context = ctx;
         }
-        //public IActionResult Index()
-        //{
-        //    var students = context.Students.OrderBy(s => s.StudentId).ToList();
-        //    return View(students);
-        //}
         public IActionResult Index()
         {
             dynamic mymodel = new ExpandoObject();
             ViewBag.Students = context.Students.OrderBy(s => s.Name).ToList();
             ViewBag.Majors = context.Majors.OrderBy(m => m.Title).ToList();
-
+            
             mymodel.Majorings = context.Majorings.OrderBy(ma => ma.StudentId).ToList();
             mymodel.Majors = context.Majors.OrderBy(m => m.MajorId).ToList();
             mymodel.Students = context.Students.OrderBy(s => s.StudentId).ToList();
             return View(mymodel);
         }
-        public IActionResult Details(int id)
-        {
-            Student s = context.Students.Find(id);
-            return View(s);
-        }
         [HttpGet]
         public IActionResult Add()
         {
+            ViewBag.Students = context.Students.ToList();
+            ViewBag.Majors = context.Majors.ToList();
             return View();
         }
         [HttpPost]
-        public IActionResult Add(Student s)
+        public IActionResult Add(Majoring m)
         {
             if (ModelState.IsValid)
             {
-                context.Students.Add(s);
+                context.Majorings.Add(m);
                 context.SaveChanges();
                 return RedirectToAction("Index");
             }
             else
             {
-                return View(s);
+                ViewBag.Students = context.Students.ToList();
+                ViewBag.Majors = context.Majors.ToList();
+                return View(m);
             }
         }
         [HttpGet]
         public IActionResult Edit(int id)
         {
-            var s = context.Students.Find(id);
-            return View(s);
+            var m = context.Students.Find(id);
+            return View(m);
         }
         [HttpPost]
-        public IActionResult Edit(Student s)
+        public IActionResult Edit(Student m)
         {
             if (ModelState.IsValid)
             {
-                context.Students.Update(s);
+                context.Students.Update(m);
                 context.SaveChanges();
                 return RedirectToAction("Index");
             }
             else
             {
-                return View(s);
+                return View(m);
             }
         }
         [HttpGet]
         public IActionResult Delete(int id)
         {
-            var s = context.Students.Find(id);
-            return View(s);
+            var m = context.Students.Find(id);
+            return View(m);
         }
         [HttpPost]
-        public IActionResult Delete(Student s)
+        public IActionResult Delete(Student m)
         {
-            context.Students.Remove(s);
+            context.Students.Remove(m);
             context.SaveChanges();
             return RedirectToAction("Index");
         }
     }
 }
-
-

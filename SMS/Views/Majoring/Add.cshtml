@@ -1,0 +1,29 @@
+﻿@model Majoring
+
+<h3>Add New</h3>
+<form asp-action="Add">
+    <div class="form-group">
+        <label asp-for="StudentId">Student:</label>
+        <select asp-for="StudentId" class="form-control"
+                asp-items="@(new SelectList(ViewBag.Students, "StudentId","StudentId"))">
+            <option value=""></option>
+        </select>
+        <span asp-validation-for="StudentId" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="MajorId">Major:</label>
+        <select asp-for="MajorId" class="form-control"
+                asp-items="@(new SelectList(ViewBag.Majors, "MajorId","MajorId"))">
+            <option value=""></option>
+        </select>
+        <span asp-validation-for="MajorId" class="text-danger"></span>
+    </div>
+
+
+    <div class="form-group">
+        <input type="submit" value="Add" class="btn btn-info" />
+        <a asp-action="Index" class="btn btn-warning">Cancel</a>
+    </div>
+</form>
+
+
