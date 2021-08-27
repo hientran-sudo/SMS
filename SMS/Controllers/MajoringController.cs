@@ -50,38 +50,6 @@ namespace SMS.Controllers
                 return View(m);
             }
         }
-        [HttpGet]
-        public IActionResult Edit(int id)
-        {
-            var m = context.Students.Find(id);
-            return View(m);
-        }
-        [HttpPost]
-        public IActionResult Edit(Student m)
-        {
-            if (ModelState.IsValid)
-            {
-                context.Students.Update(m);
-                context.SaveChanges();
-                return RedirectToAction("Index");
-            }
-            else
-            {
-                return View(m);
-            }
-        }
-        [HttpGet]
-        public IActionResult Delete(int id)
-        {
-            var m = context.Students.Find(id);
-            return View(m);
-        }
-        [HttpPost]
-        public IActionResult Delete(Student m)
-        {
-            context.Students.Remove(m);
-            context.SaveChanges();
-            return RedirectToAction("Index");
-        }
+        
     }
 }
